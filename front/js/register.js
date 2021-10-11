@@ -55,7 +55,7 @@ function registro(){
           });
          window.location="./login.html"; 
         }else{
-            alertify.error('Error Usuario no creado');
+            alertify.error('Error Porfavor revise sus datos');
         }
     }
     newRegistro();
