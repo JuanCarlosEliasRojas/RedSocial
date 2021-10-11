@@ -1,18 +1,18 @@
 const sequelize = require('../db/conexion');
-module.exports = class loginModel{
+
+module.exports = class loginModel {
     constructor(login){
         this.login = login;
     }
-
-    async find(user){
+    async find (user){
         let result = await sequelize.query("SELECT correo FROM users WHERE correo = '" + user.correo + "' AND [password] = '" + user.password + "'");
-        if(result[0].length >0){
-            if(user.correo == result[0][0].user){
+        if (result[0].length > 0) {
+            if (user.user == result[0][0].user) {
                 return result[0][0];
-            }else{
+            } else {
                 return false;
             }
-        }else{
+        } else {
             return false;
         }
     }
