@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const sequileze = require('./back/db/conexion');
-
+const registerView = require('./back/views/registerView');
 const app = express();
 app.use(cors());
 const session = require('express-session');
@@ -26,7 +26,7 @@ async function serverStart() {
 }
 
 serverStart();
-
+registerView(app);
 
 
 
