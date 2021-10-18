@@ -5,6 +5,7 @@ const sequileze = require('./back/db/conexion');
 const registerView = require('./back/views/registerView');
 const loginView  = require('./back/views/loginView');
 const perfilView = require('./back/views/perfilView');
+const listaView = require('./back/views/listaView');
 const app = express();
 app.use(cors());
 const session = require('express-session');
@@ -31,7 +32,6 @@ serverStart();
 registerView(app);
 loginView(app);
 perfilView(app);
-
-
+listaView(app);
 
 
