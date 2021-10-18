@@ -23,12 +23,12 @@ async function login(){
         },
         body: JSON.stringify(login),
     });
-    //Regreso del token
+   
     const data = await url.json();
     console.log(data.token);
     if (data.token != "Usuario no autenticado.") {
-        localStorage.setItem('token',JSON.stringify(data.token)) //Manda el token al local storage
-        window.location="./index.html"; //Redirigir a la pagina
+        localStorage.setItem('token',JSON.stringify(data.token)) 
+        window.location="./index.html"; 
     } else {
       
 alertify

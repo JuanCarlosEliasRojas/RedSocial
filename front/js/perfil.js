@@ -1,18 +1,20 @@
-function reg_perfil(){
-  async function perfil(){
-    let correo = document.getElementById('correo').value;
-    let ciudad = document.getElementById('ciudad').value;
-    let pais = document.getElementById('pais').value;
-    let edad = document.getElementById('edad').value;
-    let estudios = document.getElementById('estudios').value;
-    let linkedin = document.getElementById('linkedin').value;
+async function registro(){
+    let token = JSON.parse(localStorage.getItem('token'));
+    let token_decoded = JSON.parse(window.atob(token.split('.')[1])); 
 
-    if(correo == null || corre.length == 0 || /^\s+$/.test(corre)){
-      alertify.error('Error campo correo no llenado');
-            return false;
+    let correo = token_decoded.data.correo;
+    
+    let ciudad = document.getElementById("ciudad").value;
+    let pais = document.getElementById("pais").value;
+    let edad = document.getElementById("edad").value;
+    let estudios = document.getElementById("estudios").value;
+    let idiomas = document.getElementById("idioma").value;
+    let hobbies = document.getElementById("hobie").value;
 
-    }else{
-      if(ciudad == null || ciudad.length == 0 || /^\s+$/.test(ciudad)){
+    let linkedin = document.getElementById("linkedin").value;
+
+  
+    if(ciudad == null || ciudad.length == 0 || /^\s+$/.test(ciudad)){
         alertify.error('Error campo ciudad no llenado');
             return false;
 
@@ -36,41 +38,107 @@ function reg_perfil(){
                 alertify.error('Error campo linkedin no llenado');
             return false;
 
+              }else{
+                if(idiomas == null || idiomas.length == 0 || /^\s+$/.test(idiomas)){
+                  alertify.error('Error campo idioma no llenado');
+                  return false;
+                }else{
+                  if(hobbies == null || hobbies.length == 0 || /^\s+$/.test(hobbies)){
+                    alertify.error('Error campo hobbies no llenado');
+                    return false;
+                  }
+                }
               }
             }
           }
         }
       }
-    }
-    let perfil ={
-      correo:correo,
-      ciudad:ciudad,
-      pais:pais,
-      edad:edad,
-      estudios:estudios,
-      linkedin:linkedin
-    };
-
-    let url = await fetch('http://localhost:3000/perfil',{
-      method:"POST",
-      mode:"cors",
-      headers:{
-          "Content-Type": "application/json",
-      },
-      body: JSON.stringify(perfil),
-  });
-  const data = await url.text();
-  console.log(data)
-  if(data == "Perfil lleno"){
-      alertify
-     .alert("Perfil llenado", function(){
-      alertify.message('OK');
+    
+   
+    let perfil = {
+        correo:correo,
+        ciudad:ciudad,
+        pais:pais,
+        edad:edad,
+        estudios:estudios,
+        idiomas:idiomas,
+        linkedin:linkedin,
+        hobbies:hobbies
+    };   
+    let url = await fetch('http://localhost:3000/perfil', {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer "+token
+        },
+        body: JSON.stringify(perfil),
     });
-   window.location="./index.html"; 
-  }else{
-      alertify.error('Error Porfavor revise sus datos');
-  }
+    //Regreso de la respuesta
+    const data = await url.text();
+    console.log(data)
+    if (data != "Perfil no creado.") {
+      alertify
+      .alert("Usuario Creado correctamente.", function(){
+       alertify.message('OK');
+     });
+    } else {
+        alert("Los datos no pudieron guardarse correctamente.")
+    }
+}
 
-  }
-  perfil();
-} 
+async function mostrarInf(){
+    let token = JSON.parse(localStorage.getItem('token')); 
+    let tokenDecoded = decodeURIComponent(window.atob(token.split('.')[1]).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join('')); 
+    let token_decoded = JSON.parse(tokenDecoded); 
+    const correo = String(token_decoded.data.correo); 
+
+    const nombre = document.getElementById("nombre");
+    const apellido_p = document.getElementById("apellido_p");
+    const apellido_s = document.getElementById("apellido_s");
+    nombre.value = token_decoded.data.nombre;
+    apellido_p.value = token_decoded.data.apellido_p;
+    apellido_s.value = token_decoded.data.apellido_s;
+
+    let url = await fetch('http://localhost:3000/perfil/'+ correo , {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+      
+        },
+    });
+    
+    const data = await url.json(url);
+    console.log(data)
+    if (data.noExiste != "La información del usuario no existe.") {
+       
+       
+        const cd = document.getElementById("ciudad");
+        const pais = document.getElementById("pais");
+        const edad = document.getElementById("edad");
+        const estudios = document.getElementById("estudios");
+        const idiomas = document.getElementById("idioma");
+        const hobbies = document.getElementById("hobie");
+        const linkedIn = document.getElementById("linkedin");
+
+      
+        cd.value = data.ciudad;
+        pais.value = data.pais;
+        edad.value = data.edad;
+        estudios.value = data.estudios;
+        idiomas.value = data.idiomas;
+        linkedIn.value = data.linkedIn;
+        hobbies.value = data.hobbies;
+        
+    } else {
+      alertify
+      .alert("La información del perfil no existe, debe llenar los campos para guardar su información.", function(){
+       alertify.message('OK');
+     });
+    }
+}
+
+
+mostrarInf();

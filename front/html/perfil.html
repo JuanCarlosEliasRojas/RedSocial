@@ -7,7 +7,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/perfil.css" rel="stylesheet">
-    
+          <!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+<!-- 
+    RTL version
+-->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.rtl.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.rtl.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
+
     </head>
 <body>
   <div class="container register">
@@ -16,7 +35,7 @@
             <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
             <h3>Bienvenido</h3>
             <p>Para utilizar esta red social necesitamos que llenes los siguientes datos para tu perfil</p>
-            <input type="submit" name="" value="Login"/><br/>
+        
         </div>
         <div class="col-md-9 register-right">
          
@@ -26,38 +45,45 @@
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Correo *" id="correo" value="" />
+                                
+                                <input type="text" class="form-control" placeholder="Nombre *" id="nombre" value="" />
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Ciudad *" id="ciudad" value="" />
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Pais *" id="pais" value="" />
+                                <input type="number" class="form-control" placeholder="Edad *" id="edad" value="" />
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Edad *" id="edad" value="" />
+                                <input type="text" class="form-control"  placeholder="Estudios *" id="estudios" value="" />
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control"  placeholder="Estudios *" id="estudios" value="" />
+                                <input type="text" class="form-control" placeholder="Idiomas" id="idioma" value="" />
+                             
                             </div>
                          
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Perfil de LinkedIn*" id="linkedin" value="" />
+                                <input type="text" class="form-control" placeholder="Primer Apellido*" id="apellido_p" value="" />
                             </div>
                             <div class="form-group">
-                                <input type="text"  name="txtEmpPhone" class="form-control" placeholder="Hobbies*"   value="" />
-                            </div>
-                            <h5>idiomas que hablas</h5>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Idioma 1" id="idioma_uno" value="" />
+                                <input type="text" class="form-control" placeholder="Segundo Apellido*" id="apellido_s" value="" />
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Idioma 2" id="idioma_dos" value="" />
+                                <input type="text" class="form-control" placeholder="Pais *" id="pais" value="" />
                             </div>
-                         
-                            <input type="submit" class="btnRegister"  value="Register"/>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Perfil de LinkedIn*" id="linkedin" value="" />
+                            </div>
+                              <div class="form-group">
+                                <input type="text"   class="form-control" placeholder="Hobbies*"  id="hobie" value="" />
+                            </div>
+                          
+                        </div>
+
+                        <div class="col-md-6">
+                                <button class="btn btn-outline-success btn-lg btn-block" style="margin-left: 150px;" onclick="registro()"> Registar</button>
                         </div>
                     </div>
                 </div>
@@ -67,10 +93,12 @@
     </div>
 
 </div>
+<script src="../js/perfil.js"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>   
 <script type="text/javascript">
-
+    
 </script>
 </body>
 </html>
