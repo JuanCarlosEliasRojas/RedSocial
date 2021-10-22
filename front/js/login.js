@@ -1,5 +1,5 @@
 async function login(){
-    //Vailidacion de los campos
+   
     let correo = document.getElementById("correo").value;
     let password = document.getElementById("password").value;
     if(correo == null || correo.length == 0 || /^\s+$/.test(correo)) {
@@ -10,7 +10,7 @@ async function login(){
         return false;
     }
     
-    //Proceso del login
+   
     let login = {
         correo: correo,
         password: password
